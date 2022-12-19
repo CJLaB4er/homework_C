@@ -7,13 +7,17 @@
 
 Console.Clear();
 
+Console.WriteLine("Введите количество элементов массива...");
+
+int size = int.Parse(Console.ReadLine()!);
+
 int[] GetArray()
 {
-    int[] newArray = new int[3];
+    int[] newArray = new int[size];
     Console.Write($"Массив [");
     for (int i = 0; i < newArray.Length; i++)
     {
-        newArray[i] = new Random().Next(1, 100);
+        newArray[i] = new Random().Next(100, 1000);
         if (i != newArray.Length-1) Console.Write($"{newArray[i]}, ");
         else Console.Write($"{newArray[i]}");
     }
