@@ -72,7 +72,7 @@ int[,] SortArray(int[,] array)
 }
 
 int[,] arr = CreateArrayMN();
-Console.WriteLine("Случайно сгененрированный двумерный массив выглядит так:");
+Console.WriteLine("Случайно сгенерированный двумерный массив выглядит так:");
 PrintArray(arr);
 Console.WriteLine();
 Console.WriteLine("А вот так он выглядит после сортировки строк по убыванию:");
