@@ -45,11 +45,18 @@ void PrintArray(int[,] array)
 
 int[,] SortArray(int[,] array)
 {
-    int tempnumb = 0;
+    int tempnumb = 0; // временная переменная для перестановки элементов массива
+    
+    // Цикл для прохода по строкам массива
     for (int row = 0; row < array.GetLength(0); row++)
     {
+
+        // Цикл для прохождения по элементам строки столько раз,
+        // сколько в нем элементов минус один.
         for (int i = 0; i < array.GetLength(1) - 1; i++)
         {
+
+            // Сортировка пузырьком.
             for (int column = 0; column < array.GetLength(1) - 1; column++)
             {
                 if (array[row, column] < array[row, column + 1])
