@@ -19,20 +19,22 @@ Console.Clear();
 
 int[,] CreateArrayMN()
 {
-    Console.WriteLine("Создаем массив размерностью m x n...");
-    Console.WriteLine("Введите число строк массива...");
-    int m = int.Parse(Console.ReadLine()!);
-    Console.WriteLine("Введите число столбцов массива...");
-    int n = int.Parse(Console.ReadLine()!);
-    
+    int m = -1;
+    int n = -1;
 
-    if (m == n) 
+    while (m == n)
     {
-        Console.WriteLine();
-        Console.WriteLine("Массив не является прямоугольным!");
-        Console.WriteLine("Попробуем снова...");
-        Console.WriteLine();
-        CreateArrayMN();
+        Console.WriteLine("Создаем массив размерностью m x n...");
+        Console.WriteLine("Введите число строк массива...");
+        m = int.Parse(Console.ReadLine()!);
+        Console.WriteLine("Введите число столбцов массива...");
+        n = int.Parse(Console.ReadLine()!);
+        if (m == n)
+        {
+            Console.Clear();
+            Console.WriteLine("Недопустимый ввод, m не должно быть равно n!");
+        }
+        else Console.Clear();
     }
 
     int[,] array = new int[m, n];
@@ -46,8 +48,6 @@ int[,] CreateArrayMN()
     }
     return array;
 }
-    
-
 
 void PrintArray(int[,] array)
 {
@@ -62,4 +62,30 @@ void PrintArray(int[,] array)
     }
 }
 
-PrintArray(CreateArrayMN());
+void CheckRowInArray(int[,] array)
+{
+    int index = -1;
+    int sum = 1000;
+
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        int tempsum = 0;
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            tempsum += array[i, j];
+            
+        }
+        if (tempsum < sum)
+            {
+                sum = tempsum;
+                index = i;
+            }
+
+
+    }
+    Console.WriteLine($"Наименьшая сумма элементов у строки под номером {index + 1} - {sum}.");
+}
+
+int[,] arr = CreateArrayMN();
+PrintArray(arr);
+CheckRowInArray(arr);
